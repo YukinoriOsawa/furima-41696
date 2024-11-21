@@ -12,6 +12,14 @@ validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と�
 with_options presence: true do
   # ニックネーム必須
   validates :nickname
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "は@を含む有効な形式で入力してください" }
+  
+  # パスワードが空では登録できない、6文字未満では登録できない
+  validates :encrypted_password, presence: true, length: { minimum: 6 }
+
+  # パスワードとパスワード（確認用）が一致していることを検証
+  validates :password, confirmation: true
+  validates :encrypted_password, presence: true
 
   # 姓と名はひらがな、カタカナ、漢字のみ許可する
   validates :last_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width characters." }
