@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path, notice: '出品が完了しました'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
       :shipping_cost_id, 
       :shipping_area_id, 
       :shipping_day_id
-    )
+    ).merge(user_id: current_user.id)
   end
 end
 
