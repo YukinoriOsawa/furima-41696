@@ -33,7 +33,7 @@
 | shipping_area_id | integer    | null: false                      |
 | shipping_day_id  | integer    | null: false                      |
 | price            | integer    | null: false                      |
-| user             | references | foreign_key: true, null: false   |
+| user             | references | foreign_key: true, null: false   |出品者ユーザー
 
 
 
@@ -64,7 +64,7 @@
 | Column | Type       | Options                          |
 |--------|------------|----------------------------------|
 | item   | references | foreign_key: true, null: false   |
-| user   | references | foreign_key: true, null: false   |
+| user   | references | foreign_key: true, null: false   | 購入者ユーザー
 
 ### Association
 
