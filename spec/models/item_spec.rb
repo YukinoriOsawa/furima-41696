@@ -17,73 +17,73 @@ RSpec.describe Item, type: :model do
       it '商品名が空では保存できない' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("Name を入力してください")
       end
 
       it '商品説明が空では保存できない' do
         @item.description = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Description can't be blank")
+        expect(@item.errors.full_messages).to include("Description を入力してください")
       end
 
       it '価格が空では保存できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price は¥300以上¥9,999,999以下の半角数値で入力してください")
       end
 
       it '価格が300円未満では保存できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
+        expect(@item.errors.full_messages).to include("Price は¥300以上¥9,999,999以下の半角数値で入力してください")
       end
 
       it '価格が10000000円を超えると保存できない' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+        expect(@item.errors.full_messages).to include("Price は¥300以上¥9,999,999以下の半角数値で入力してください")
       end
 
       it '価格が半角数字以外だと保存できない' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include('Price は¥300以上¥9,999,999以下の半角数値で入力してください')
       end
 
       it '画像が空では保存できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include('Image を1枚添付してください')
       end
 
       it 'カテゴリーが選択されていない場合は保存できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を選択してください")
       end
 
       it '商品状態が選択されていない場合は保存できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank")
+        expect(@item.errors.full_messages).to include("Status を選択してください")
       end
 
       it '配送料の負担が選択されていない場合は保存できない' do
         @item.shipping_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping cost を選択してください")
       end
 
       it '発送元の地域が選択されていない場合は保存できない' do
         @item.shipping_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping area can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping area を選択してください")
       end
 
       it '発送までの日数が選択されていない場合は保存できない' do
         @item.shipping_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping day can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping day を選択してください")
       end
     end
   end
