@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :stars
-  attribute :star_count, :integer, default: 0
+  attribute :star_count, :integer, default: 1
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   def star_count
