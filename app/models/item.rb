@@ -1,6 +1,14 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to :shipping_cost
+  belongs_to :shipping_area
+  belongs_to :shipping_day
+  
+
 
    # バリデーション
    validates :image, presence: { message: "を1枚添付してください" } # 商品画像の添付を必須にする
