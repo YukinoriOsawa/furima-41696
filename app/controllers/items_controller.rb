@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
   def index
+    # 新しい順に商品を取得 (created_atが新しい順)
+    @items = Item.order(created_at: :desc)
   end
+
 
   def new
     @item = Item.new
