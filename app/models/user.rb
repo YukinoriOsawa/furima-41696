@@ -28,4 +28,8 @@ with_options presence: true do
   validates :birth_date
 end
 
+def name
+  "#{last_name} #{first_name}"
+end
+
 end
