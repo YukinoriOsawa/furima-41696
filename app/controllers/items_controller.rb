@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
   before_action :set_item, only: [:edit, :update, :show]
-  
+  before_action :contributor_confirmation, only: [:edit, :update]
+
+
   def index
     # 新しい順に商品を取得 (created_atが新しい順)
     @items = Item.order(created_at: :desc)
@@ -61,6 +63,9 @@ end
     ).merge(user_id: current_user.id)
   end
 
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
+  end
 
 end
 
