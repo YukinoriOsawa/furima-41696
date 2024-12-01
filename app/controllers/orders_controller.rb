@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
  
   def index
+    @purchase_address = PurchaseAddress.new 
   end
 
   def create
