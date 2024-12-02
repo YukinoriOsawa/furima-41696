@@ -26,19 +26,19 @@ RSpec.describe PurchaseAddress, type: :model do
       it '郵便番号が空では保存できない' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code を入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Postal code ハイフンを入れて入力してください")
       end
 
       it '郵便番号にハイフンが含まれていない場合、保存できない' do
         @purchase_address.postal_code = '1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@purchase_address.errors.full_messages).to include("Postal code ハイフンを入れて入力してください")
       end
 
       it '都道府県が選択されていない場合、保存できない' do
         @purchase_address.shipping_area_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping area can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Shipping area 選択してください")
       end
 
       it '市区町村が空では保存できない' do
@@ -62,19 +62,19 @@ RSpec.describe PurchaseAddress, type: :model do
       it '電話番号が12桁以上では保存できない' do
         @purchase_address.phone_number = '090123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include("Phone number を入力してください")
       end
 
       it '電話番号が9桁以下では保存できない' do
-        @purchase_address.phone_number = '0901234567'
+        @purchase_address.phone_number = '090123456'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include("Phone number を入力してください")
       end
 
       it '電話番号にハイフンが含まれていると保存できない' do
         @purchase_address.phone_number = '090-1234-5678'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include("Phone number を入力してください")
       end
 
       it 'トークンが空では保存できない' do

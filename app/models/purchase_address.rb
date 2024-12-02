@@ -3,14 +3,14 @@ class PurchaseAddress
   attr_accessor :postal_code, :shipping_area_id, :city, :addresses, :building, :phone_number, :item_id, :user_id, :token
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :shipping_area_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :city
-    validates :addresses
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "ハイフンを入れて入力してください" }
+    validates :shipping_area_id, numericality: { other_than: 1, message: "選択してください" }
+    validates :city, presence: { message: "を入力してください" }
+    validates :addresses, presence: { message: "を入力してください" }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "を入力してください" }
     validates :user_id
     validates :item_id
-    validates :token
+    validates :token, presence: { message: "を入力してください" }
   end
 
   def save
