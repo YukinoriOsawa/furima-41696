@@ -8,8 +8,8 @@ class PurchaseAddress
     validates :city, presence: { message: "を入力してください" }
     validates :addresses, presence: { message: "を入力してください" }
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "を入力してください" }
-    validates :user_id
-    validates :item_id
+    validates :user_id, presence: { message: "を入力してください" }
+    validates :item_id, presence: { message: "を入力してください" }
     validates :token, presence: { message: "を入力してください" }
   end
 

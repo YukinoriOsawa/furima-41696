@@ -28,6 +28,19 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Postal code ハイフンを入れて入力してください")
       end
+      
+      it 'userと紐付いていないと保存できない' do
+        @purchase_address.user_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("User を入力してください")
+      end
+
+      it 'itemと紐付いていないと保存できない' do
+        @purchase_address.item_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Item を入力してください")
+      end
+
 
       it '郵便番号にハイフンが含まれていない場合、保存できない' do
         @purchase_address.postal_code = '1234567'

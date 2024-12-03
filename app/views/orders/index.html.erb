@@ -14,7 +14,7 @@
       <%= @item.name %>  <!-- 商品名 -->
     </h2>
     <div class='buy-item-price'>
-      <p class='item-price-text'>¥<%= @item.price.to_s(:delimited) %> </p>  <!-- 商品価格 -->
+      <p class='item-price-text'>¥<%= @item.price %> </p>  <!-- 商品価格 -->
       <p class='item-price-sub-text'><%= @item.shipping_cost.name %></p>  <!-- 送料負担 -->
     </div>
   </div>
