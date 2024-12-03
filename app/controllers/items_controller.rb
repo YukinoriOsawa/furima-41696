@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
 
 
 def edit
+  if @item.purchase.present? 
+    # トップページへリダイレクトする
+    redirect_to root_path
+    end
 end
 
 
