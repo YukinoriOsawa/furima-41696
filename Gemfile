@@ -75,12 +75,11 @@ group :test do
   gem "webdrivers"
 end
 
-	gem 'devise'
-  gem 'active_hash'
   gem 'pry-rails'
   gem 'payjp'
 gem 'gon'
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 gem "aws-sdk-s3", require: false
