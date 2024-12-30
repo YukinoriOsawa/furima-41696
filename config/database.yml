@@ -24,4 +24,4 @@ production:
   database: furima_41696_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sockproduction:
+  socket: /var/lib/mysql/mysql.sock
