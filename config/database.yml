@@ -6,7 +6,7 @@ development:
   <<: *default
   adapter: mysql2
   username: root
-  password:
+  password: ''
   host: localhost
   database: ajax_app_rails7_development
 
