@@ -85,3 +85,7 @@ group :production do
 end
 gem "aws-sdk-s3", require: false
 gem 'nokogiri', '= 1.11.0'
+gem 'loofah', '= 2.10.0'
+
+
+

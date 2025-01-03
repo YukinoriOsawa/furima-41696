@@ -162,7 +162,7 @@ GEM
     logger (1.6.4)
     loofah (2.21.1)
       crass (~> 1.0.2)
-      nokogiri (1.11.0)
+      nokogiri (= 1.11.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
